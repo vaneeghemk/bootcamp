@@ -1,0 +1,49 @@
+:scope {
+    --card-title: #ab1c1c;
+    --card-border: #de8a8a;
+}
+
+.news-list>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+    grid-gap: 24px;
+}
+
+.news-list>ul>li {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-list>ul>li:hover {
+    transform: scale(1.05);
+}
+
+.news-list .news-item--content {
+    margin: 16px;
+}
+
+.news-list .news-item--content a, .news-list .news-item--content a:visited {
+    color: var(--card-title);
+}
+
+.news-list .news-item--content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.news-list .news-item--content a:hover {
+    text-decoration: none;
+}
+
+.news-list>ul>li img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+}
