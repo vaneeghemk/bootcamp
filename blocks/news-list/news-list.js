@@ -56,12 +56,15 @@ function createNewsElement(newsItem) {
  * @param {HTMLElement} block The news list block element
  */
 export default async function decorate(block) {
+  const nrOfItems = parseInt(block.children?.[0]?.children?.[0].innerText);
+
   try {
     const news = await fetchNews();
 
     const ul = document.createElement('ul');
     ul.classList.add('news-list');
-    news.forEach((newsItem) => {
+    const shownNews = isNaN(nrOfItems) ? news : news.slice(0, nrOfItems);
+    shownNews.forEach((newsItem) => {
       const li = createNewsElement(newsItem);
       ul.append(li);
     });
@@ -70,5 +73,6 @@ export default async function decorate(block) {
     block.append(ul);
   } catch (error) {
     block.textContent = 'Unable to load news';
+    console.error(error)
   }
 }
